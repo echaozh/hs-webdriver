@@ -137,7 +137,6 @@ handleJSONErr WDResponse{rspVal = val, rspStatus = status} = do
                          , errScreen = screen }
       e errType = throwIO $ FailedCommand errType errInfo'
   case status of
-    0   -> return ()
     7   -> e NoSuchElement
     8   -> e NoSuchFrame
     9   -> throwIO . UnknownCommand . errMsg $ errInfo
