@@ -57,7 +57,7 @@ instance WebDriver WD where
     handleHTTPResp res
     where setManager s = do
               mgr <- liftBase $ newManager defaultManagerSettings {
-                  managerResponseTimeout = Just 60000000
+                  managerResponseTimeout = Just 600000000
                   }
               putSession s { wdHTTPManager = Just mgr }
 
