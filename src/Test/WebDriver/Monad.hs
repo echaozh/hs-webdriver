@@ -56,7 +56,9 @@ instance WebDriver WD where
     handleHTTPErr res
     handleHTTPResp res
     where setManager s = do
-              mgr <- liftBase $ newManager defaultManagerSettings
+              mgr <- liftBase $ newManager defaultManagerSettings {
+                  managerResponseTimeout = Just 60000000
+                  }
               putSession s { wdHTTPManager = Just mgr }
 
 -- |Executes a 'WD' computation within the 'IO' monad, using the given
